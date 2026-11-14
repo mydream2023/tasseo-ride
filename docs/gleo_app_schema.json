@@ -1,0 +1,43 @@
+{
+  "app": "kr.tasseo.ride",
+  "description": "학원 라이딩 탑승·안전벨트 확인. Gleo AI가 운전자의 말을 아래 함수로 바꿔 부른다(Gleo Interface function calling).",
+  "functions": [
+    {
+      "name": "start_pickup",
+      "description": "오늘 일정에서 해당 아이의 다음 픽업 학원으로 경로를 잡고 라이딩을 시작한다. 도착 5분 전에 아이에게 알림을 보낸다.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "child": { "type": "string", "description": "아이 호칭(예: 지우)" }
+        },
+        "required": ["child"]
+      },
+      "examples": ["지우 데리러 가자", "지우 학원 픽업 시작해"]
+    },
+    {
+      "name": "get_ride_status",
+      "description": "아이의 현재 라이딩 상태를 알려 준다(픽업 가는 중/학원 앞 대기/탑승·벨트 확인/하차 확인). 차량 신호(2열 도어·좌석·벨트) 기준.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "child": { "type": "string", "description": "아이 호칭" }
+        },
+        "required": ["child"]
+      },
+      "examples": ["지우 탔어?", "지우 벨트 맸어?"]
+    },
+    {
+      "name": "notify_family",
+      "description": "가족에게 짧은 상황 메시지를 보낸다(예: 10분 늦어). 운전 중 휴대폰 조작 없이 음성으로만.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "to": { "type": "string", "description": "받는 사람(지우·아빠 등)" },
+          "message": { "type": "string" }
+        },
+        "required": ["to", "message"]
+      },
+      "examples": ["아빠한테 10분 늦는다고 해 줘"]
+    }
+  ]
+}
